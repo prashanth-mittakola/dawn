@@ -3,12 +3,16 @@
 <cart-drawer class="drawer">
   <script>
     let cartDrawer = document.querySelector("cart-drawer");
+    let cartDrawerCloseButton = document.querySelector("cart-drawer .drawer__close");
+    function closeCartDrawer () {
+    	return cartDrawer.classList.remove("active");
+    }
     cartDrawer.addEventListener("click",function(e){
       if(e.target.className === "drawer animate active"){
-        cartDrawer.classList.remove("active");
+        closeCartDrawer();
       }
-    
-    })
+    });
+    cartDrawerCloseButton.addEventListener("click",closeCartDrawer());
   </script>
   <div class="cart-drawer" id="cart-drawer">
     <form action="{{ routes.cart_url }}" class="drawer__inner" method="post" id="cart-drawer" >
