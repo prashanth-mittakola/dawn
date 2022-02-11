@@ -4,12 +4,10 @@ class CartDrawer extends HTMLElement {
 
     this.onBodyClick = this.handleBodyClick.bind(this);
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
-
-    document.querySelector('.drawer__close').addEventListener('click', this.close.bind(this));
     
-//     this.querySelectorAll('.drawer__close').forEach((closeButton) =>
-//       closeButton.addEventListener('click', this.close.bind(this))
-//     );
+    this.querySelectorAll('.drawer__close').forEach((closeButton) =>
+      closeButton.addEventListener('click', this.close.bind(this))
+    );
   }
 
   open() {
@@ -24,7 +22,8 @@ class CartDrawer extends HTMLElement {
   }
 
   close() {
-    this.classList.remove('active');
+    document.querySelector(".drawer").classList.remove("active");
+//     this.classList.remove('active');
 
     document.body.removeEventListener('click', this.onBodyClick);
 
@@ -39,14 +38,10 @@ class CartDrawer extends HTMLElement {
         document.getElementById(section.id).innerHTML =
           this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
       }));
-    
-      this.querySelectorAll('.drawer__close').addEventListener('click', ()=>{
-		document.querySelector("cart-drawer").classList.remove("active");
-	  });
 
-//       this.querySelectorAll('.drawer__close').forEach((closeButton) =>
-//         closeButton.addEventListener('click', this.close.bind(this))
-//       );
+      this.querySelectorAll('.drawer__close').forEach((closeButton) =>
+        closeButton.addEventListener('click', this.close.bind(this))
+      );
 
       this.open();
   }
