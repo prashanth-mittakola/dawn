@@ -39,13 +39,16 @@ class CartDrawer extends HTMLElement {
         document.getElementById(section.id).innerHTML =
           this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
       }));
+    
+      this.querySelectorAll('.drawer__close').addEventListener('click', ()=>{
+		document.querySelector("cart-drawer").classList.remove("active");
+	  });
 
-      this.querySelectorAll('.drawer__close').forEach((closeButton) =>
-        closeButton.addEventListener('click', this.close.bind(this))
-      );
+//       this.querySelectorAll('.drawer__close').forEach((closeButton) =>
+//         closeButton.addEventListener('click', this.close.bind(this))
+//       );
 
       this.open();
-      this.close();
   }
 
   getSectionsToRender() {
