@@ -278,10 +278,9 @@
 </cart-drawer>
 
 <script>
-    let cartDrawer = document.querySelector("cart-drawer");
-    cartDrawer.addEventListener("click",function(e){
+    document.querySelector("cart-drawer").addEventListener("click",function(e){
       if(e.target.className === "drawer animate active"){
-        cartDrawer.classList.remove("active");
+        document.querySelector("cart-drawer").classList.remove("active");
       }
     });
 </script>
