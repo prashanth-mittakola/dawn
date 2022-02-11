@@ -44,8 +44,8 @@ class CartItems extends HTMLElement {
         selector: '.shopify-section'
       },
       {
-        id: 'drawer__close',
-        section: 'drawer__close',
+        id: 'cart-drawer',
+        section: 'cart-drawer',
         selector: '.shopify-section'
       },
       {
