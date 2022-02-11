@@ -6,7 +6,7 @@
       <div class="drawer__header">
         <h1 class="drawer__heading h2">Your cart</h1>
         <div>
-          <button id="d-close" class="drawer__close button button--tertiary" type="button">{% render 'icon-close' %}</button>
+          <button id="d-close" class="drawer__close button button--tertiary" type="button" onclick="document.querySelector('cart-drawer').classList.remove('active')">{% render 'icon-close' %}</button>
         </div>
       </div>
 
@@ -279,14 +279,9 @@
 
 <script>
     let cartDrawer = document.querySelector("cart-drawer");
-    let cartDrawerCloseButton = document.querySelector(".drawer__close");
-    function closeCartDrawer () {
-    	return cartDrawer.classList.remove("active");
-    }
     cartDrawer.addEventListener("click",function(e){
       if(e.target.className === "drawer animate active"){
-        closeCartDrawer();
+        cartDrawer.classList.remove("active");
       }
     });
-    cartDrawerCloseButton.addEventListener("click",closeCartDrawer());
 </script>
