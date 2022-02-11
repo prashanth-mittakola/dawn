@@ -2,9 +2,9 @@
 
 <cart-drawer class="drawer">
   <script>
-    document.querySelector("cart-drawer.drawer").addEventListener("click",function(e){
+    document.querySelector("cart-drawer").addEventListener("click",function(e){
       console.log(e)
-    	e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer.drawer").classList.remove("active") : true;
+    	e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer").classList.remove("active") : true;
     })
   </script>
   <div class="cart-drawer" id="cart-drawer">
