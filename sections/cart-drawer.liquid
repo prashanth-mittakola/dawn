@@ -5,7 +5,7 @@
     document.querySelector("cart-drawer").addEventListener("click",function(e){
       console.log(e.target.className === "drawer animate active")
       if(e.target.className === "drawer animate active"){
-        console.log("giiih")
+        document.querySelector("cart-drawer").classList.remove("active");
       }
     
     })
