@@ -5,7 +5,7 @@ class CartDrawer extends HTMLElement {
     this.onBodyClick = this.handleBodyClick.bind(this);
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
 
-    document.querySelectorAll('.drawer__close').forEach((closeButton) =>
+    this.querySelectorAll('.drawer__close').forEach((closeButton) =>
       closeButton.addEventListener('click', this.close.bind(this))
     );
   }
