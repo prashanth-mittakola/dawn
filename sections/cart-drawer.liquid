@@ -3,6 +3,7 @@
 <cart-drawer class="drawer">
   <script>
     document.querySelector("cart-drawer.drawer").addEventListener("click",function(e){
+      console.log(e.target)
     	e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer.drawer").classList.remove("active") : true;
     })
   </script>
