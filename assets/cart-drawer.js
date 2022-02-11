@@ -45,6 +45,7 @@ class CartDrawer extends HTMLElement {
       );
 
       this.open();
+      this.close();
   }
 
   getSectionsToRender() {
