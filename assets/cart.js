@@ -22,13 +22,13 @@ class CartItems extends HTMLElement {
 
     this.debouncedOnChange = debounce((event) => {
       this.onChange(event);
-      console.log("HII")
     }, 300);
 
     this.addEventListener('change', this.debouncedOnChange.bind(this));
   }
 
   onChange(event) {
+    console.log("e",event)
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
 
