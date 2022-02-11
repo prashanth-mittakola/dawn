@@ -22,6 +22,7 @@ class CartDrawer extends HTMLElement {
   }
 
   close() {
+    console.log(this)
     this.classList.remove('active');
 
     document.body.removeEventListener('click', this.onBodyClick);
