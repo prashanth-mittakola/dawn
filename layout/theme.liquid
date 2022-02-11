@@ -176,9 +176,9 @@
       window.accessibilityStrings = {
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
-      const cartDrawer = document.querySelector("cart-drawer");
-      cartDrawer.click(function(e){
-        e.target === "cart-drawer.drawer.animate.active" ? cartDrawer.classList.remove("active"):console.log("HIII");
+      
+      document.querySelector("cart-drawer").click(function(e){
+        e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer").classList.remove("active"):console.log("HIII");
       })
       
     </script>
