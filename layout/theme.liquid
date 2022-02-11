@@ -139,7 +139,7 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {%- render 'cart-drawer', color_scheme: section.settings.color_scheme -%}
+    {%- include 'cart-drawer', color_scheme: section.settings.color_scheme -%}
 
     {% section 'announcement-bar' %}
     {% section 'header' %}
