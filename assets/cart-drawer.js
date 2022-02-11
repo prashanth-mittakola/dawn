@@ -18,7 +18,7 @@ class CartDrawer extends HTMLElement {
       const cartDrawer = document.getElementById('cart-drawer');
       const focusElement = cartDrawer.querySelector('.cart-item__link');
       trapFocus(cartDrawer, focusElement);
-    });
+    }, { once: true });
   }
 
   close() {
