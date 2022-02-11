@@ -1,8 +1,8 @@
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
-<cart-drawer class="drawer" onclick="abc()">
-  <script>function abc(){
-  	console.log("HIII")
+<cart-drawer class="drawer" onclick="abc(e)">
+  <script>function abc(e){
+  	console.log("HIII",e)
   }</script>
   <div class="cart-drawer" id="cart-drawer">
     <form action="{{ routes.cart_url }}" class="drawer__inner" method="post" id="cart-drawer" >
