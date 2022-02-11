@@ -12,7 +12,7 @@
         closeCartDrawer();
       }
     });
-    cartDrawerCloseButton.addEventListener("click",closeCartDrawer());
+    cartDrawerCloseButton.addEventListener("click",()=>closeCartDrawer());
   </script>
   <div class="cart-drawer" id="cart-drawer">
     <form action="{{ routes.cart_url }}" class="drawer__inner" method="post" id="cart-drawer" >
