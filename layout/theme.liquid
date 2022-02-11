@@ -176,12 +176,6 @@
       window.accessibilityStrings = {
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
-      
-      document.querySelector("cart-drawer").click(function(e){
-        console.log(e)
-        e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer").classList.remove("active"):console.log("HIII");
-      })
-      
     </script>
 
     {%- if settings.predictive_search_enabled -%}
