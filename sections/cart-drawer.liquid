@@ -4,7 +4,10 @@
   <script>
     document.querySelector("cart-drawer").addEventListener("click",function(e){
       console.log(e)
-    	e.target === "cart-drawer.drawer.animate.active" ? document.querySelector("cart-drawer").classList.remove("active") : true;
+      if(e.target === "cart-drawer.drawer.animate.active"){
+        console.log("giiih")
+      }
+    
     })
   </script>
   <div class="cart-drawer" id="cart-drawer">
