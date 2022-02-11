@@ -22,8 +22,8 @@ class CartDrawer extends HTMLElement {
   }
 
   close() {
-    document.querySelector(".drawer").classList.remove("active");
-//     this.classList.remove('active');
+//     document.querySelector(".drawer").classList.remove("active");
+    this.classList.remove('active');
 
     document.body.removeEventListener('click', this.onBodyClick);
 
