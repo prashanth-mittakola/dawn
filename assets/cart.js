@@ -18,7 +18,7 @@ class CartItems extends HTMLElement {
     this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status') || document.getElementById('shopping-cart-drawer-line-item-status');
 
     this.currentItemCount = Array.from(this.querySelectorAll('[name="updates[]"]'))
-      .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
+    .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
 
     this.debouncedOnChange = debounce((event) => {
       this.onChange(event);
@@ -72,35 +72,35 @@ class CartItems extends HTMLElement {
     });
 
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
-      .then((response) => {
-        return response.text();
-      })
-      .then((state) => {
-        const parsedState = JSON.parse(state);
-        this.classList.toggle('is-empty', parsedState.item_count === 0);
-        const cartFooter = document.getElementById('main-cart-footer');
+    .then((response) => {
+      return response.text();
+    })
+    .then((state) => {
+      const parsedState = JSON.parse(state);
+      this.classList.toggle('is-empty', parsedState.item_count === 0);
+      const cartFooter = document.getElementById('main-cart-footer');
 
-        if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
+      if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
 
-        this.getSectionsToRender().forEach((section => {
-          const elementToReplace =
-            document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
+      this.getSectionsToRender().forEach((section => {
+        const elementToReplace =
+              document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
 
-          elementToReplace.innerHTML =
-            this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
-        }));
+        elementToReplace.innerHTML =
+          this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+      }));
 
-        this.updateLiveRegions(line, parsedState.item_count);
-        const lineItem =  document.getElementById(`CartItem-${line}`);
-        if (lineItem && lineItem.querySelector(`[name="${name}"]`)) lineItem.querySelector(`[name="${name}"]`).focus();
-        this.disableLoading();
-      }).catch((e) => {
-        console.log(e);
-        this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));
-        const errors = document.getElementById('cart-errors') || document.getElementById('drawer-cart-errors');
-        errors.textContent = window.cartStrings.error;
-        this.disableLoading();
-      });
+      this.updateLiveRegions(line, parsedState.item_count);
+      const lineItem =  document.getElementById(`CartItem-${line}`);
+      if (lineItem && lineItem.querySelector(`[name="${name}"]`)) lineItem.querySelector(`[name="${name}"]`).focus();
+      this.disableLoading();
+    }).catch((e) => {
+      console.log(e);
+      this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));
+      const errors = document.getElementById('cart-errors') || document.getElementById('drawer-cart-errors');
+      errors.textContent = window.cartStrings.error;
+      this.disableLoading();
+    });
   }
 
   updateLiveRegions(line, itemCount) {
@@ -109,11 +109,11 @@ class CartItems extends HTMLElement {
       const quantityElement = document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
 
       lineItemError
-        .querySelector('.cart-item__error-text')
-        .innerHTML = window.cartStrings.quantityError.replace(
-          '[quantity]',
-          quantityElement.value
-        );
+      .querySelector('.cart-item__error-text')
+      .innerHTML = window.cartStrings.quantityError.replace(
+        '[quantity]',
+        quantityElement.value
+      );
     }
 
     this.currentItemCount = itemCount;
@@ -123,33 +123,33 @@ class CartItems extends HTMLElement {
     cartStatus.setAttribute('aria-hidden', false);
 
     setTimeout(() => {
-      cartStatus.setAttribute('aria-hidden', true);
-    }, 1000);
-  }
+               cartStatus.setAttribute('aria-hidden', true);
+  }, 1000);
+}
 
-  getSectionInnerHTML(html, selector) {
-    return new DOMParser()
-      .parseFromString(html, 'text/html')
-      .querySelector(selector).innerHTML;
-  }
+getSectionInnerHTML(html, selector) {
+  return new DOMParser()
+  .parseFromString(html, 'text/html')
+  .querySelector(selector).innerHTML;
+}
 
-  enableLoading(line) {
-    const mainCartItems = document.getElementById('main-cart-items') || document.getElementById('drawer-main-cart-items');
-    mainCartItems.classList.add('cart__items--disabled');
+enableLoading(line) {
+  const mainCartItems = document.getElementById('main-cart-items') || document.getElementById('drawer-main-cart-items');
+  mainCartItems.classList.add('cart__items--disabled');
 
-    const cartItemElements = this.querySelectorAll(`#CartItem-${line} .loading-overlay`);
-    const cartDrawerItemElements = this.querySelectorAll(`#Drawer-cartItem-${line} .loading-overlay`);
+  const cartItemElements = this.querySelectorAll(`#CartItem-${line} .loading-overlay`);
+  const cartDrawerItemElements = this.querySelectorAll(`#Drawer-cartItem-${line} .loading-overlay`);
 
-    [...cartItemElements, ...cartDrawerItemElements].forEach((overlay) => overlay.classList.remove('hidden'));
+  [...cartItemElements, ...cartDrawerItemElements].forEach((overlay) => overlay.classList.remove('hidden'));
 
-    document.activeElement.blur();
-    this.lineItemStatusElement.setAttribute('aria-hidden', false);
-  }
+  document.activeElement.blur();
+  this.lineItemStatusElement.setAttribute('aria-hidden', false);
+}
 
-  disableLoading() {
-    const mainCartItems = document.getElementById('main-cart-items') || document.getElementById('drawer-main-cart-items');
-    mainCartItems.classList.remove('cart__items--disabled');
-  }
+disableLoading() {
+  const mainCartItems = document.getElementById('main-cart-items') || document.getElementById('drawer-main-cart-items');
+  mainCartItems.classList.remove('cart__items--disabled');
+}
 }
 
 class CartDrawerItems extends CartItems {
